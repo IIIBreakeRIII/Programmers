@@ -1,3 +1,5 @@
+# 신규 아이디 추천
+
 import string
 
 def solution(new_id):
@@ -42,16 +44,4 @@ def solution(new_id):
     for i in range(len(list_temp_word)):
         answer += list_temp_word[i]
 
-    print(answer)
-
-solution("...!@BaT#*..y.abcdefghijklm")
-print("---------------------")
-solution("z-+.^.")
-print("---------------------")
-solution("=.=")
-print("---------------------")
-solution("123_.def")
-print("---------------------")
-solution("abcdefghijklmn.p")
-print("---------------------")
-solution("")
+    return answer
