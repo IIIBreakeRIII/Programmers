@@ -1,6 +1,0 @@
-
-    for i in range(3):
-        if answer_temp[i] == max_score:
-            answer.append(i + 1)
-        
-    return answer
