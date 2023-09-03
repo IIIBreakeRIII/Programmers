@@ -1,34 +1,20 @@
 # 구명 보트
 
 def solution(people, limit):
-    
+    answer = 0
     people.sort()
-    weight_limit = limit
-    boat_limit = 1
-    boat_count = 1
-    index = 0
 
-    while index != len(people):
-        if index + 1 == len(people):
-            break
+    a = 0
+    b = len(people) - 1
+    
+    while a < b :
+        if people[b] + people[a] <= limit:
+            a += 1
+            answer += 1
 
-        weight_limit -= people[index]
-        if weight_limit >= people[index + 1]:
-            if boat_limit == 0:
-                weight_limit = limit
-                boat_limit = 1
-                index += 1
-                boat_count += 1
-            else:
-                index += 1
-                boat_limit -= 1
-        else:
-            weight_limit = limit
-            boat_limit = 1
-            boat_count += 1
-            index += 1
+        b -= 1
         
-    return boat_count
+    return len(people) - answer
 
 print(solution([70, 50, 80, 50], 100))
 print(solution([70, 80, 50], 100))
