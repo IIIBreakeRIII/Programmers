@@ -1,23 +1,33 @@
-# 귤 고르기
+def sorting(dictionary):
+
+    tan_list = []
+
+    for i in dictionary:
+        tan_list.append(dictionary[i])
+
+    tan_list.sort(reverse=True)
+
+    return tan_list
 
 def solution(k, tangerine):
-    
-    type = [0 for i in range(max(tangerine) + 1)]
+
+    type = {}
     answer = 0
+    index = 0
 
     for i in tangerine:
-        type[i] += 1
+        if i in type.keys():
+            type[i] += 1
+        else:
+            type[i] = 1
 
-    for i in range(len(type)):
-        if k <= 0:
-            break
-        answer +=1
-        max_value = max(type)
-        k = k - max_value
-        type[type.index(max_value)] = 0
+    temp = sorting(type)
+
+    while k > 0:
+        answer += 1
+        k -= temp[index]
+        index += 1
 
     return answer
 
 print(solution(6, [1, 3, 2, 5, 4, 5, 2, 3]))
-print(solution(4, [1, 3, 2, 5, 4, 5, 2, 3]))
-print(solution(2, [1, 1, 1, 1, 2, 2, 2, 3]))
