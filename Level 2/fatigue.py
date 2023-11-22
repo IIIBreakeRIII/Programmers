@@ -1,17 +1,22 @@
 # 피로도
+# 순열을 이용한 문제
+
+from itertools import permutations
 
 def solution(k, dungeons):
-
+    
     answer = 0
-
-    dungeons.sort(key=lambda x:x[0], reverse=True)
-
-    for i in dungeons:
-        if i[0] <= k:
-            print(i[0])
-            k -= i[1]
-            answer += 1
-
+    
+    for permut in permutations(dungeons, len(dungeons)):
+        hp = k
+        count = 0
+        
+        for lst in permut:
+            if hp >= lst[0]:
+                hp -= lst[1]
+                count += 1
+        
+        if count > answer:
+            answer = count    
+        
     return answer
-
-print(solution(80, [[80,20],[50,40],[30,10]]))
