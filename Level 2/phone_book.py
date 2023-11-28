@@ -9,3 +9,20 @@ def solution(phone_book):
             return False
     
     return True
+
+def solution_2(phone_book):
+    answer = True
+    hash_map = {}
+    for phone_number in phone_book:
+        hash_map[phone_number] = 1
+    for phone_number in phone_book:
+        temp = ""
+        for number in phone_number:
+            temp += number
+            print(temp)
+            if temp in hash_map and temp != phone_number:
+                answer = False
+                print(temp, answer)
+    return answer
+
+print(solution_2(["12","123","1235","567","88"]))
